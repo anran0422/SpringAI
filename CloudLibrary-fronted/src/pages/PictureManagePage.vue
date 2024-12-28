@@ -2,9 +2,13 @@
   <div id="userManagePage">
     <a-flex justify="space-between">
       <h2>图片管理</h2>
-      <a-button type="primary" href="/add_picture" target="_blank">+ 创建图片</a-button>
+      <a-space>
+        <a-button type="primary" href="/add_picture" target="_blank">+ 创建图片</a-button>
+        <a-button type="primary" href="/add_picture/batch" target="_blank" ghost>+ 批量创建图片</a-button>
+      </a-space>
     </a-flex>
-
+    <div style="margin-bottom: 16px"></div>
+    <!--搜索部分-->
     <a-form layout="inline" :model="searchParams" @finish="doSearch">
       <a-form-item label="关键词" name="searchText">
         <a-input
@@ -38,9 +42,8 @@
         />
       </a-form-item>
     </a-form>
-
-
-
+    <div style="margin-bottom: 8px"></div>
+    <!--表格部分-->
     <a-table
       :columns="columns"
       :data-source="dataList"
@@ -88,7 +91,7 @@
           <div>审核人：{{ record.reviewerId }}</div>
         </template>
         <template v-else-if="column.key === 'action'">
-          <a-space wrap>
+          <a-space wrap >
             <a-button
               v-if="record.reviewStatus !== PIC_REVIEW_STATUS_ENUM.PASS"
               type="link"
