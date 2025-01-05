@@ -34,7 +34,6 @@ import { message } from 'ant-design-vue'
 import { useRouter } from 'vue-router'
 import { uploadPictureByBatchUsingPost } from '@/api/pictureController'
 
-
 const formData = reactive<API.PictureUploadByBatchRequest>({
   count: 10,
 })
