@@ -1,6 +1,8 @@
 {
   "dependencies": {
-    "file-saver": "^2.0.5"
+    "file-saver": "^2.0.5",
+    "vue-cropper": "^1.1.4",
+    "vue3-colorpicker": "^2.3.0"
   },
   "devDependencies": {
     "@types/file-saver": "^2.0.7"

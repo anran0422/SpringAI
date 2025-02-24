@@ -49,28 +49,41 @@
             <a-descriptions-item label="大小">
               {{ formatSize(picture.picSize) }}
             </a-descriptions-item>
+            <a-descriptions-item label="主色调">
+              <a-space>
+                {{ picture.picColor ?? '-' }}
+                <div
+                  v-if="picture.picColor"
+                  :style="{
+        backgroundColor: toHexColor(picture.picColor),
+        width: '16px',
+        height: '16px',
+      }"
+                />
+              </a-space>
+            </a-descriptions-item>
 
             <!-- 操作按钮-->
             <a-space wrap>
-              <a-button v-if="canEdit" type="default" @click="doEdit">
-                编辑
-                <template #icon>
-                  <EditOutlined />
-                </template>
-              </a-button>
-              <a-button v-if="canEdit" danger @click="doDelete">
-                删除
-                <template #icon>
-                  <DeleteOutlined />
-                </template>
-              </a-button>
               <a-button type="primary" @click="doDownload">
                 下载
                 <template #icon>
                   <DownloadOutlined />
                 </template>
               </a-button>
-
+              <a-button :icon="h(ShareAltOutlined)" type="primary" ghost @click="doShare" >
+                分享
+              </a-button>
+              <!-- 分享图片组件 -->
+              <ShareModal ref="shareModalRef" :link="shareLink"  />
+            </a-space>
+            <a-space wrap>
+              <a-button v-if="canEdit" :icon="h(EditOutlined)" type="default" @click="doEdit">
+                编辑
+              </a-button>
+              <a-button v-if="canEdit" :icon="h(DeleteOutlined)" danger @click="doDelete">
+                删除
+              </a-button>
             </a-space>
           </a-descriptions>
 
@@ -83,13 +96,14 @@
 </template>
 
 <script setup lang="ts">
-import { computed, onMounted, ref } from 'vue'
+import { computed, h, onMounted, ref } from 'vue'
 import { deletePictureUsingPost, getPictureVoByIdUsingGet } from '@/api/pictureController'
 import { message } from 'ant-design-vue'
-import { downloadImage, formatSize } from '../../utils'
-import { DownloadOutlined } from '@ant-design/icons-vue'
+import { downloadImage, formatSize, toHexColor } from '../../utils'
+import { DownloadOutlined,DeleteOutlined,EditOutlined,ShareAltOutlined } from '@ant-design/icons-vue'
 import { useLoginUserStore } from '@/stores/user'
 import router from '@/router'
+import ShareModal from '@/components/modal/ShareModal.vue'
 
 const props = defineProps<{
   id: string | number
@@ -155,8 +169,15 @@ const doDownload = () => {
   downloadImage(picture.value.url)
 }
 
-
-
+// -------- 分享操作 --------
+const shareModalRef = ref()
+const shareLink = ref<string>()
+const doShare = () => {
+  shareLink.value = `${window.location.protocol}//${window.location.host}/picture/${picture.value.id}`
+  if(shareModalRef.value) {
+    shareModalRef.value.openModal()
+  }
+}
 
 onMounted(() => {
   fetchPictureDetail()
