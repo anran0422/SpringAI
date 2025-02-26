@@ -7,6 +7,17 @@
         <a-button type="primary" :href="`/add_picture?spaceId=${id}`" target="_blank">
           + 创建图片
         </a-button>
+
+        <a-button
+          type="primary"
+          ghost
+          :icon="h(BarChartOutlined)"
+          :href="`/space_analyze?spaceId=${id}`"
+          target="_blank"
+        >
+          空间分析
+        </a-button>
+
         <!--批量编辑图片-->
         <a-button :icon="h(EditOutlined)" @click="doEditBatch">批量编辑</a-button>
 
@@ -63,7 +74,7 @@ import { formatSize } from '@/utils'
 import PictureList from '@/components/PictureList.vue'
 import PictureSearchForm from '@/components/PictureSearchForm.vue'
 import EditPictureBatchModal from '@/components/modal/EditPictureBatchModal.vue'
-import { EditOutlined } from '@ant-design/icons-vue'
+import { EditOutlined,BarChartOutlined } from '@ant-design/icons-vue'
 import { ColorPicker } from 'vue3-colorpicker'
 import "vue3-colorpicker/style.css"
 
