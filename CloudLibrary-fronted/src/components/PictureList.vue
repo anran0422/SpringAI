@@ -40,10 +40,10 @@
                 <ShareAltOutlined @click="e => doShare(picture, e)"/>
               </a-tooltip>
               <a-tooltip title="编辑" color='cyan'>
-                <EditOutlined  @click="e => doEdit(picture, e)" />
+                <EditOutlined v-if="canEdit" @click="e => doEdit(picture, e)" />
               </a-tooltip>
               <a-tooltip title="删除" color='volcano'>
-                <DeleteOutlined @click="e => doDelete(picture, e)" />
+                <DeleteOutlined v-if="canDelete" @click="e => doDelete(picture, e)" />
               </a-tooltip>
             </template>
           </a-card>
@@ -70,12 +70,16 @@ interface Props {
   loading?: boolean
   showOP?: boolean
   onReload?: () => void
+  canEdit?: boolean
+  canDelete?: boolean
 }
 
 const props = withDefaults(defineProps<Props>(), {
   dataList: () => [],
   loading: false,
-  showOP: false
+  showOP: false,
+  canEdit: false,
+  canDelete: false,
 })
 
 // 跳转至图片详情
