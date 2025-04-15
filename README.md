@@ -4,7 +4,6 @@
 
 基于 SpringAI + RAG + Ollama + OpenAI 的 智能平台。
 
-本项目一共包含四个小功能，是在循序渐近的学习过程中开发的：AI 智能聊天、哄哄模拟器、智能客服、ChatPDF。
 本项目历经分阶段研发与持续优化，成功构建起四大核心功能模块：基于自然语言处理的智能问答系统、情感类的互动模拟、支持多轮对话的智能客服解决方案，以及具备智能文档解析能力的ChatPDF工具组。
 
 ![](https://cloud-1311088844.cos.ap-beijing.myqcloud.com/public_share/project/AIHub/AIHub%E4%B8%BB%E9%A1%B5.jpg)
