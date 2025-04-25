@@ -13,7 +13,7 @@
       </a-layout>
 
       <a-layout-footer class="footer">
-        <a href="https://github.com/anran0422" target="_blank"> 联系我 </a>
+        <a href="https://www.baidu.com" target="_blank"> 百度一下，你就知道 </a>
       </a-layout-footer>
     </a-layout>
 
