@@ -100,6 +100,7 @@ import EditPictureBatchModal from '@/components/modal/EditPictureBatchModal.vue'
 import { EditOutlined, BarChartOutlined, TeamOutlined } from '@ant-design/icons-vue'
 import { ColorPicker } from 'vue3-colorpicker'
 import "vue3-colorpicker/style.css"
+
 import { SPACE_PERMISSION_ENUM, SPACE_TYPE_MAP } from '../../constants/space'
 
 const props = defineProps<{

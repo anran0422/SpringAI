@@ -82,8 +82,8 @@ const originItems = [
   },
   {
     key: 'others',
-    label: h('a', { href: 'https://www.baidu.com', target: '_blank' }, '百度一下，你就知道'),
-    title: '百度一下，你就知道',
+    label: h('a', { href: 'https://github.com/anran0422', target: '_blank' }, '关于我'),
+    title: '关于我',
   },
 ]
 

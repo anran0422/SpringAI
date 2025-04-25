@@ -15,7 +15,7 @@ export const formatSize = (size?: number) => {
  * @param url 图片下载地址
  * @param fileName 要保存为的文件名
  */
-import { saveAs } from 'file-saver';
+import { saveAs } from "file-saver";
 
 export function downloadImage(url?: string, fileName?: string) {
   if (!url) {

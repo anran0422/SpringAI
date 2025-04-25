@@ -140,7 +140,7 @@ defineExpose({
 
 // --------- 实时编辑 ---------
 const loginUserStore = useLoginUserStore()
-let loginUser = loginUserStore.loginUser
+const loginUser = loginUserStore.loginUser
 // 正在编辑的用户
 const editingUser = ref<API.UserVO>()
 // 没有用户正在编辑中，可进入编辑
